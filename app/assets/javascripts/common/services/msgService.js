@@ -18,7 +18,7 @@ define(['angular', './playRoutes'], function (angular) {
 
         msgSocket.onmessage = function(msg) {
           $rootScope.$apply(function() {
-            messages.push(msg.data);
+            messages.push(angular.fromJson(msg.data));
           });
         };
       },

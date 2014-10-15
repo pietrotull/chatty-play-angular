@@ -1,8 +1,6 @@
 <h1>Welcome to Chatty</h1>
 <div class="msgContainer">
-    <div class="msg"><span class="user">Mark: </span> nice to be here</div>
-
-    <div data-ng-repeat="msg in messages" class="msg"><span class="user">Mark: </span> {{msg}}</div>
+    <div data-ng-repeat="msg in messages" class="msg"><span class="user">{{msg.user}}: </span> {{msg.msg}}</div>
 </div>
 <p>Enjoy!</p>
         <form>
@@ -10,6 +8,4 @@
 <input data-ng-model="msg" type="text" placeholder="Message"/>
 <button data-ng-click="submitMsg()">Send</button></form>
 <hr/>
-<div data-example>
-    Attached to this div is a directive that prints to the console. Check out the JavaScript console.
-</div>
+

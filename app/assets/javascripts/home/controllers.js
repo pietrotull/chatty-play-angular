@@ -10,10 +10,10 @@ define([], function() {
     $scope.messages = msgService.messages;
 
     $scope.submitMsg = function () {
-      msgService.sendMsg($scope.msg);
+      var msg = { user: $scope.user, msg: $scope.msg };
+      msgService.sendMsg(JSON.stringify(msg));
       $scope.msg = '';
     };
-
   };
 
   HomeCtrl.$inject = ['$scope', '$rootScope', '$location', 'helper', 'msgService'];
@@ -46,5 +46,4 @@ define([], function() {
     FooterCtrl: FooterCtrl,
     HomeCtrl: HomeCtrl
   };
-
 });

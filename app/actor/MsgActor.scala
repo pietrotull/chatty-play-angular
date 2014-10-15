@@ -23,8 +23,7 @@ class MsgActor(out: ActorRef) extends Actor {
 
   override def receive = {
    case msg: String =>
-     Logger.info ("Got msg!")
-     // out ! ("Received msg" + msg)
+     Logger.info ("Got msg!: " + msg)
      MsgActor.broadcast(msg)
  }
 
