@@ -6,27 +6,24 @@ define(['angular', './playRoutes'], function (angular) {
 
   var mod = angular.module('common.msgService', ['common.playRoutes']);
   mod.factory('msgService', ['$rootScope', '$http', 'playRoutes', function ($rootScope, $http, playRoutes) {
-    var messages = [];
+    var messages = [], msgSocket;
 
     return {
       start: function () {
         var webSocketUrl = playRoutes.controllers.Application.initWebSocket().webSocketUrl();
-        // console.log('käynnistyy: ', playRoutes.controllers);
-        $rootScope.messagingSocket = new WebSocket(webSocketUrl);
-        $rootScope.messagingSocket.onopen = function (event) {
+        msgSocket = new WebSocket(webSocketUrl);
+        msgSocket.onopen = function (event) {
           console.log('onopen : ', event);
         };
 
-        $rootScope.messagingSocket.onmessage = function(msg) {
+        msgSocket.onmessage = function(msg) {
           $rootScope.$apply(function() {
             messages.push(msg.data);
           });
-
-          console.log('received : ', msg);
         };
       },
       sendMsg: function (msg) {
-        $rootScope.messagingSocket.send(msg);
+        msgSocket.send(msg);
       },
       messages: messages
     };

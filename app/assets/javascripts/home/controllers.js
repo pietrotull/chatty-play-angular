@@ -7,13 +7,13 @@ define([], function() {
   /** Controls the index page */
   var HomeCtrl = function($scope, $rootScope, $location, helper, msgService) {
     $rootScope.pageTitle = 'Welcome';
+    $scope.messages = msgService.messages;
+
     $scope.submitMsg = function () {
       msgService.sendMsg($scope.msg);
+      $scope.msg = '';
     };
-    $scope.messages = msgService.messages;
-    $scope.checkMsgs = function() {
-      console.log('Has ' + $scope.messages.length + 'msg(s)');
-    };
+
   };
 
   HomeCtrl.$inject = ['$scope', '$rootScope', '$location', 'helper', 'msgService'];
