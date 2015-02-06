@@ -11,8 +11,8 @@ define(['angular', 'home', 'user', 'dashboard'], function(angular) {
   // We must already declare most dependencies here (except for common), or the submodules' routes
   // will not be resolved
   var app =  angular.module('app', ['yourprefix.home', 'yourprefix.user', 'yourprefix.dashboard']);
-  app.run(function (msgService) {
+  app.run(['msgService',function (msgService) {
     msgService.start();
-  });
+  }]);
   return app;
 });
