@@ -10,7 +10,7 @@ define(['angular'], function (angular) {
       replace: true,
       templateUrl: '/assets/javascripts/common/directives/pkHeader.html',
       link: function ($scope/*scope, el, attrs*/) {
-        $log.info('Loaded header directive');
+
         // Wrap the current user from the service in a watch expression
         $scope.$watch(function () {
           var user = userService.getUser();
@@ -22,6 +22,7 @@ define(['angular'], function (angular) {
         $scope.logout = function () {
           userService.logout();
           $scope.user = undefined;
+          $log.info('Logged out');
           $location.path('/');
         };
       }

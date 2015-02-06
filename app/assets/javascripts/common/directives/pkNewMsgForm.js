@@ -7,18 +7,23 @@ define(['angular'], function(angular) {
   'use strict';
 
   var mod = angular.module('common.directives.pkNewMsgForm', []);
-  mod.directive('pknewmsgform', ['$log', 'msgService', function($log, msgService) {
+  mod.directive('pknewmsgform', ['$log', 'msgService', 'userService', function($log, msgService, userService) {
     return {
       restrict: 'AE',
       templateUrl: '/assets/javascripts/common/directives/pkNewMsgForm.html',
       scope: {},
       controller: function ($scope) {
         $scope.submitMsg = function () {
-          var msg = { user: $scope.user, msg: $scope.msg };
+          var msg = { user: $scope.userName(), msg: $scope.msg };
           msgService.sendMsg(JSON.stringify(msg));
           $log.info('sent msg: ', msg);
           $scope.msg = '';
+
         };
+        $scope.userName = function () {
+          return userService.getUser().name;
+        };
+        $scope.isLoggedIn = userService.isLoggedIn;
       }
     };
   }]);

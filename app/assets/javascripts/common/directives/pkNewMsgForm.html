@@ -1,12 +1,11 @@
 <div>
   <h3>New message</h3>
-  <form class="form-inline">
+  <form class ="form-inline" data-ng-hide="!isLoggedIn()">
     <div class="form-group">
-      <label for="userName">Name</label>
-      <input class="form-control" id="userName" data-ng-model="user" type="text" placeholder="User"/>
-      <label for="newMsg">Message</label>
-      <input class="form-control" id="newMsg" data-ng-model="msg" type="text" size="100" placeholder="Message"/>
+      <label for="newMsg">{{userName()}}: </label>
+      <input class="form-control" id="newMsg" data-ng-model="msg" type="text" size="50" placeholder="Message"/>
       <button class="btn btn-default" data-ng-click="submitMsg()">Send</button>
     </div>
   </form>
+  <div data-ng-hide="isLoggedIn()">Please login to write a new message</div>
 </div>

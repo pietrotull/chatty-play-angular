@@ -46,6 +46,9 @@ define(['angular', 'common'], function (angular) {
       },
       getUser: function () {
         return user;
+      },
+      isLoggedIn: function () {
+       return angular.isDefined(user);
       }
     };
   }]);
