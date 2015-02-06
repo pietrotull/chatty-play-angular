@@ -6,7 +6,7 @@ define([], function() {
 
   /** Controls the index page */
   var HomeCtrl = function($scope, $rootScope, $location, helper, msgService, playRoutes) {
-    $rootScope.pageTitle = 'Welcome';
+    $rootScope.pageTitle = 'Welcome to Chatty';
     $scope.messages = msgService.messages;
 
     $scope.submitMsg = function () {
@@ -26,13 +26,7 @@ define([], function() {
 
   HomeCtrl.$inject = ['$scope', '$rootScope', '$location', 'helper', 'msgService', 'playRoutes'];
 
-  /** Controls the footer */
-  var FooterCtrl = function(/*$scope*/) {
-  };
-  //FooterCtrl.$inject = ['$scope'];
-
   return {
-    FooterCtrl: FooterCtrl,
     HomeCtrl: HomeCtrl
   };
 });
