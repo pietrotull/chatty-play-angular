@@ -1,16 +1,14 @@
 import WebKeys._
 
-// TODO Replace with your project's/module's name
 name := """chatty"""
 
-// TODO Set your organization here; ThisBuild means it will apply to all sub-modules
 organization in ThisBuild := "fi.piet"
 
 // TODO Set your version here
-version := "2.3.5"
+version := "2.3.7"
 
 // Scala Version, Play supports both 2.10 and 2.11
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.5"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 

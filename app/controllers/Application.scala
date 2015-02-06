@@ -9,6 +9,7 @@ import play.api.libs.json._
 import play.api.libs.json.Reads._
 import play.api.libs.functional.syntax._
 import play.api.cache._
+import services.ComponentRegistry
 
 /** Application controller, handles authentication */
 object Application extends Controller with Security {
@@ -104,6 +105,13 @@ object Application extends Controller with Security {
   def logout() = HasToken(parse.empty) { token => userId => implicit request =>
     Cache.remove(token)
     Ok.discardingCookies(DiscardingCookie(name = AuthTokenCookieKey))
+  }
+
+
+  def cakeTest() = Action {
+    val userService = ComponentRegistry.userService
+    userService.printCrap()
+    Ok(Json.obj("msg" -> "just trying"))
   }
 
 }

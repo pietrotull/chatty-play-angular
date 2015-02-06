@@ -1,7 +1,8 @@
 package models
 
-//import org.joda.time.DateTime
 import java.util.Date
+import play.api.libs.json._
+import play.api.libs.functional.syntax._
 
 case class User(
   id: Option[Long],
@@ -13,9 +14,6 @@ case class User(
 )
 
 object User {
-
-  import play.api.libs.json._
-  import play.api.libs.functional.syntax._
 
   implicit val UserFromJson: Reads[User] = (
     (__ \ "id").readNullable[Long] ~

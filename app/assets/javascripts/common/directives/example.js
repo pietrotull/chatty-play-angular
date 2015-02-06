@@ -11,7 +11,7 @@ define(['angular'], function(angular) {
     return {
       restrict: 'AE',
       link: function(/*scope, el, attrs*/) {
-        $log.info('Here prints the example directive from /common/directives.');
+        $log.info('Here prints the example directive from /common/directives. perse');
       }
     };
   }]);

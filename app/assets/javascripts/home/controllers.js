@@ -5,7 +5,7 @@ define([], function() {
   'use strict';
 
   /** Controls the index page */
-  var HomeCtrl = function($scope, $rootScope, $location, helper, msgService) {
+  var HomeCtrl = function($scope, $rootScope, $location, helper, msgService, playRoutes) {
     $rootScope.pageTitle = 'Welcome';
     $scope.messages = msgService.messages;
 
@@ -14,27 +14,17 @@ define([], function() {
       msgService.sendMsg(JSON.stringify(msg));
       $scope.msg = '';
     };
-  };
 
-  HomeCtrl.$inject = ['$scope', '$rootScope', '$location', 'helper', 'msgService'];
-
-  /** Controls the header */
-  var HeaderCtrl = function($scope, userService, helper, $location) {
-    // Wrap the current user from the service in a watch expression
-    $scope.$watch(function() {
-      var user = userService.getUser();
-      return user;
-    }, function(user) {
-      $scope.user = user;
-    }, true);
-
-    $scope.logout = function() {
-      userService.logout();
-      $scope.user = undefined;
-      $location.path('/');
+    $scope.cakeTest = function () {
+      playRoutes.controllers.Application.cakeTest().get().success(function() {
+        console.log('Cake Test Worked');
+      }).error(function () {
+        console.log('Cake Test Failed');
+      });
     };
   };
-  HeaderCtrl.$inject = ['$scope', 'userService', 'helper', '$location'];
+
+  HomeCtrl.$inject = ['$scope', '$rootScope', '$location', 'helper', 'msgService', 'playRoutes'];
 
   /** Controls the footer */
   var FooterCtrl = function(/*$scope*/) {
@@ -42,7 +32,6 @@ define([], function() {
   //FooterCtrl.$inject = ['$scope'];
 
   return {
-    HeaderCtrl: HeaderCtrl,
     FooterCtrl: FooterCtrl,
     HomeCtrl: HomeCtrl
   };
