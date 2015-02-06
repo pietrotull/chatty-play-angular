@@ -1,8 +1,12 @@
 <div>
   <h3>New message</h3>
-<form>
-  <input data-ng-model="user" type="text" placeholder="User"/>
-  <input data-ng-model="msg" type="text" placeholder="Message"/>
-  <button data-ng-click="submitMsg()">Send</button>
-</form>
+  <form class="form-inline">
+    <div class="form-group">
+      <label for="userName">Name</label>
+      <input class="form-control" id="userName" data-ng-model="user" type="text" placeholder="User"/>
+      <label for="newMsg">Message</label>
+      <input class="form-control" id="newMsg" data-ng-model="msg" type="text" size="100" placeholder="Message"/>
+      <button class="btn btn-default" data-ng-click="submitMsg()">Send</button>
+    </div>
+  </form>
 </div>
