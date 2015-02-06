@@ -7,13 +7,13 @@ define(['angular'], function(angular) {
   'use strict';
 
   var mod = angular.module('common.directives.pksingletopicview', []);
-  mod.directive('pksingletopicview', ['$log', function($log) {
+  mod.directive('pksingletopicview', [function() {
     return {
       restrict: 'AE',
       templateUrl: '/assets/javascripts/common/directives/pkSingleTopicView.html',
-      controller: function ($scope) {
+      controller: ['$scope', '$log',function ($scope, $log) {
         $log.debug('loaded topic view', $scope);
-      }
+      }]
     };
   }]);
   return mod;

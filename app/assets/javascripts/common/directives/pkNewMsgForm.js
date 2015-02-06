@@ -12,7 +12,7 @@ define(['angular'], function(angular) {
       restrict: 'AE',
       templateUrl: '/assets/javascripts/common/directives/pkNewMsgForm.html',
       scope: {},
-      controller: function ($scope) {
+      controller: ['$scope', function ($scope) {
         $scope.submitMsg = function () {
           var msg = { user: $scope.userName(), msg: $scope.msg };
           msgService.sendMsg(JSON.stringify(msg));
@@ -21,10 +21,10 @@ define(['angular'], function(angular) {
 
         };
         $scope.userName = function () {
-          return userService.getUser().name;
+          return (userService.isLoggedIn()) ? userService.getUser().name : '';
         };
         $scope.isLoggedIn = userService.isLoggedIn;
-      }
+      }]
     };
   }]);
   return mod;

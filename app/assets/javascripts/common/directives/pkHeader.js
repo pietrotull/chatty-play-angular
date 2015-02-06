@@ -9,7 +9,7 @@ define(['angular'], function (angular) {
       restrict: 'AE',
       replace: true,
       templateUrl: '/assets/javascripts/common/directives/pkHeader.html',
-      link: function ($scope/*scope, el, attrs*/) {
+      controller: ['$scope', function ($scope) {
 
         // Wrap the current user from the service in a watch expression
         $scope.$watch(function () {
@@ -25,7 +25,7 @@ define(['angular'], function (angular) {
           $log.info('Logged out');
           $location.path('/');
         };
-      }
+      }]
     };
   }]);
   return mod;
