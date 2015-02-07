@@ -8,6 +8,5 @@ define(['angular', './routes', './controllers'], function(angular, routes, contr
 
   var mod = angular.module('yourprefix.home', ['ngRoute', 'home.routes']);
   mod.controller('HeaderCtrl', controllers.HeaderCtrl);
-  mod.controller('FooterCtrl', controllers.FooterCtrl);
   return mod;
 });
