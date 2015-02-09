@@ -26,6 +26,7 @@ define(['angular', 'common'], function (angular) {
 
     return {
       loginUser: function (credentials) {
+        console.log('cred', credentials);
         return playRoutes.controllers.Application.login().post(credentials).then(function (response) {
           // return promise so we can chain easily
           token = response.data.token;

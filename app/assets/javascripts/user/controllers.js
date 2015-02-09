@@ -8,7 +8,8 @@ define([], function() {
     $scope.credentials = {};
 
     $scope.login = function(credentials) {
-      userService.loginUser(credentials).then(function(/*user*/) {
+      userService.loginUser(credentials).then(function(user) {
+        console.log('user', user);
         $location.path('/dashboard');
       });
     };

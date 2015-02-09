@@ -45,10 +45,11 @@ object User {
     // TODO: find the corresponding user
     //
     // For now return a fake user
-    if (id == 3) {
-      Some(User(Some(3L), "test@test.com", "mypassword", "John Smith", None))
-    } else {
-      None
+    id match {
+      case 1 => Some(User(Some(1L), "mar@gmail.com.com", "mypassword", "Martha Barcenas", None))
+      case 2 => Some(User(Some(2L), "ket@gmail.com", "mypassword", "Pietari Kettunen", None))
+      case 3 => Some(User(Some(3L), "test@test.com", "mypassword", "John Smith", None))
+      case _ => None
     }
   }
 
@@ -56,7 +57,10 @@ object User {
     // TODO: find the corresponding user; don't forget to encrypt the password
     //
     // For now return a fake user
-    Some(User(Some(3L), email, password, "John Smith", None))
+    email match {
+      case "mar@gmail.com" => Some(User(Some(1L), email, password, "Martha Barcenas", None))
+      case "ket@gmail.com" => Some(User(Some(2L), email, password, "Pietari Kettunen", None))
+      case _ => Some(User(Some(3L), email, password, "John Smith", None))
+    }
   }
-
 }

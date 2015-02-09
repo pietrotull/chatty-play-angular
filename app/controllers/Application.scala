@@ -78,6 +78,7 @@ object Application extends Controller with Security {
         User.findByEmailAndPassword(credentials.email, credentials.password).fold {
           BadRequest(Json.obj("status" -> "KO", "message" -> "User not registered"))
         } { user =>
+          Logger.info("Found user: " + user.name)
           /*
            * For this demo, return a dummy token. A real application would require the following,
            * as per the AngularJS documentation:
